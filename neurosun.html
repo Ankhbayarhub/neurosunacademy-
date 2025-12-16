@@ -1,0 +1,3814 @@
+<!DOCTYPE html>
+<html lang="mn" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurosun Academy - Хүүхдийн тархины хөгжлийн сургалтын төв</title>
+    <meta name="description" content="Neurosun Academy нь Cognifit.com-тэй хамтран дэлгэцийн хамааралтай хүүхдүүдийн анхаарал төвлөрөлт, ой тогтоолт сайжруулах сургалтыг санал болгодог.">
+    <meta name="keywords" content="тархины хөгжил, хүүхдийн сургалт, анхаарал төвлөрөлт, ой тогтоолт, дэлгэцийн хамаарал, cognifit, нейро сургалт">
+    <meta name="author" content="Neurosun Academy">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Neurosun Academy - Хүүхдийн тархины хөгжлийн сургалт">
+    <meta property="og:description" content="Cognifit.com-тэй хамтран дэлгэцийн хамааралтай хүүхдүүдийн тархины хөгжлийн сургалт">
+    <meta property="og:image" content="https://cdn.neurosun.mn/images/og-image.jpg">
+    <meta property="og:url" content="https://www.neurosun.mn">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://cdn.neurosun.mn/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.neurosun.mn/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.neurosun.mn/favicon-32x32.png">
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
+    <style>
+        /* CSS Variables - Design System */
+        :root {
+            /* Primary Colors */
+            --primary: #4a6fa5;
+            --primary-dark: #3a5980;
+            --primary-light: #6b93cc;
+            --primary-rgb: 74, 111, 165;
+            
+            /* Secondary Colors */
+            --secondary: #ffb400;
+            --secondary-dark: #e6a200;
+            --secondary-light: #ffcb4d;
+            --secondary-rgb: 255, 180, 0;
+            
+            /* Neutral Colors */
+            --light: #f5f9ff;
+            --light-gray: #f8f9fa;
+            --gray-light: #e9ecef;
+            --gray: #6c757d;
+            --gray-dark: #495057;
+            --dark: #2c3e50;
+            --dark-rgb: 44, 62, 80;
+            --white: #ffffff;
+            --black: #000000;
+            
+            /* Semantic Colors */
+            --success: #28a745;
+            --success-light: #d4edda;
+            --warning: #ffc107;
+            --warning-light: #fff3cd;
+            --danger: #dc3545;
+            --danger-light: #f8d7da;
+            --info: #17a2b8;
+            --info-light: #d1ecf1;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 5px;
+            --radius-md: 10px;
+            --radius-lg: 15px;
+            --radius-xl: 20px;
+            --radius-round: 50%;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-xl: 0 12px 24px rgba(0,0,0,0.2);
+            --shadow-inner: inset 0 2px 4px rgba(0,0,0,0.06);
+            
+            /* Transitions */
+            --transition-fast: all 0.2s ease;
+            --transition-normal: all 0.3s ease;
+            --transition-slow: all 0.5s ease;
+            
+            /* Typography */
+            --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-family-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-xxl: 1.5rem;
+            --font-size-xxxl: 2rem;
+            --font-size-display: 3rem;
+            
+            /* Layout */
+            --container-max-width: 1200px;
+            --header-height: 70px;
+            --sidebar-width: 280px;
+            
+            /* Z-index Layers */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal-backdrop: 1040;
+            --z-modal: 1050;
+            --z-popover: 1060;
+            --z-tooltip: 1070;
+            --z-toast: 1080;
+        }
+
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-family-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            color: var(--dark);
+        }
+
+        h1 { font-size: var(--font-size-display); }
+        h2 { font-size: var(--font-size-xxxl); }
+        h3 { font-size: var(--font-size-xxl); }
+        h4 { font-size: var(--font-size-xl); }
+        h5 { font-size: var(--font-size-lg); }
+        h6 { font-size: var(--font-size-base); }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul, ol {
+            list-style-position: inside;
+            margin-bottom: var(--spacing-md);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-style: none;
+        }
+
+        button, input, select, textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 90%;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .section-title h2 {
+            font-size: var(--font-size-xxxl);
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: var(--font-size-lg);
+        }
+
+        /* Text Utilities */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .text-success { color: var(--success); }
+        .text-danger { color: var(--danger); }
+        .text-warning { color: var(--warning); }
+        .text-info { color: var(--info); }
+        .text-gray { color: var(--gray); }
+        .text-light { color: var(--light); }
+        .text-white { color: var(--white); }
+        
+        /* Background Utilities */
+        .bg-primary { background-color: var(--primary); }
+        .bg-secondary { background-color: var(--secondary); }
+        .bg-light { background-color: var(--light); }
+        .bg-white { background-color: var(--white); }
+        .bg-dark { background-color: var(--dark); }
+        .bg-success { background-color: var(--success); }
+        .bg-danger { background-color: var(--danger); }
+        
+        /* Spacing Utilities */
+        .mt-1 { margin-top: var(--spacing-xs); }
+        .mt-2 { margin-top: var(--spacing-sm); }
+        .mt-3 { margin-top: var(--spacing-md); }
+        .mt-4 { margin-top: var(--spacing-lg); }
+        .mt-5 { margin-top: var(--spacing-xl); }
+        
+        .mb-1 { margin-bottom: var(--spacing-xs); }
+        .mb-2 { margin-bottom: var(--spacing-sm); }
+        .mb-3 { margin-bottom: var(--spacing-md); }
+        .mb-4 { margin-bottom: var(--spacing-lg); }
+        .mb-5 { margin-bottom: var(--spacing-xl); }
+        
+        .p-1 { padding: var(--spacing-xs); }
+        .p-2 { padding: var(--spacing-sm); }
+        .p-3 { padding: var(--spacing-md); }
+        .p-4 { padding: var(--spacing-lg); }
+        .p-5 { padding: var(--spacing-xl); }
+        
+        /* Display Utilities */
+        .d-none { display: none !important; }
+        .d-block { display: block !important; }
+        .d-inline { display: inline !important; }
+        .d-inline-block { display: inline-block !important; }
+        .d-flex { display: flex !important; }
+        .d-grid { display: grid !important; }
+        
+        /* Flex Utilities */
+        .flex-column { flex-direction: column; }
+        .flex-row { flex-direction: row; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-end { justify-content: flex-end; }
+        .align-center { align-items: center; }
+        .align-start { align-items: flex-start; }
+        .align-end { align-items: flex-end; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-1 { flex: 1; }
+        
+        /* Grid Utilities */
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition-normal);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: var(--font-size-base);
+            line-height: 1.5;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            vertical-align: middle;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-outline-primary {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-block {
+            display: flex;
+            width: 100%;
+        }
+
+        .btn-lg {
+            padding: var(--spacing-lg) var(--spacing-xxl);
+            font-size: var(--font-size-lg);
+        }
+
+        .btn-sm {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-size: var(--font-size-sm);
+        }
+
+        .btn-success {
+            background-color: var(--success);
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .btn-warning {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        :focus {
+            outline: 3px solid rgba(var(--primary-rgb), 0.3);
+            outline-offset: 3px;
+        }
+
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        /* Skip to Content */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: var(--spacing-md);
+            z-index: var(--z-popover);
+            transition: top 0.3s;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: var(--z-sticky);
+            transition: var(--transition-normal);
+            height: var(--header-height);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            height: calc(var(--header-height) - 10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: var(--font-size-lg);
+            flex-shrink: 0;
+        }
+
+        .logo-text h1 {
+            font-size: var(--font-size-xxl);
+            color: var(--primary);
+            margin-bottom: 0;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+            display: block;
+            font-size: var(--font-size-sm);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: var(--spacing-sm) 0;
+            color: var(--dark);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition-normal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: var(--font-size-xxl);
+            color: var(--primary);
+            cursor: pointer;
+            padding: var(--spacing-sm);
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: var(--light-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: var(--font-size-display);
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-xl);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xxl);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition-normal);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border-top: 4px solid var(--primary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-lg);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(var(--primary-rgb), 0.1);
+            border-radius: var(--radius-round);
+        }
+
+        .feature-card h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+            font-size: var(--font-size-xl);
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .program-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .program-card.featured {
+            border: 2px solid var(--secondary);
+            transform: scale(1.02);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .program-card.featured:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .program-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: var(--spacing-xs) var(--spacing-lg);
+            border-radius: 20px;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-normal);
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-content h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .program-price {
+            font-size: var(--font-size-xxl);
+            font-weight: 700;
+            color: var(--secondary);
+            margin: var(--spacing-md) 0;
+        }
+
+        .program-features {
+            margin: var(--spacing-md) 0;
+            flex-grow: 1;
+        }
+
+        .program-features li {
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .program-features i {
+            color: var(--success);
+            margin-right: var(--spacing-sm);
+            margin-top: var(--spacing-xs);
+            flex-shrink: 0;
+        }
+
+        /* Registration Section */
+        .registration {
+            background: linear-gradient(135deg, var(--light-gray), var(--gray-light));
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-row {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group .required::after {
+            content: '*';
+            color: var(--danger);
+            margin-left: var(--spacing-xs);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-base);
+            transition: var(--transition-normal);
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.2);
+        }
+
+        .form-group .error-message {
+            color: var(--danger);
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-xs);
+            display: none;
+        }
+
+        .form-group.has-error input,
+        .form-group.has-error select,
+        .form-group.has-error textarea {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(var(--danger-rgb), 0.1);
+        }
+
+        .form-group.has-error .error-message {
+            display: block;
+        }
+
+        .form-group .form-help {
+            color: var(--gray);
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-xs);
+            display: block;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: var(--z-modal);
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-md);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            font-size: var(--font-size-xxl);
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition-fast);
+            background: none;
+            border: none;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-round);
+            z-index: 1;
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+            background-color: var(--gray-light);
+        }
+
+        .modal h3 {
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary);
+            text-align: center;
+            font-size: var(--font-size-xxl);
+        }
+
+        .test-account {
+            background-color: rgba(var(--primary-rgb), 0.05);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-lg);
+            font-size: var(--font-size-sm);
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            min-height: calc(100vh - var(--header-height));
+            background-color: var(--light-gray);
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: var(--spacing-xxl) 0;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .dashboard-header h2 {
+            color: var(--white);
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .dashboard-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+        }
+
+        .dashboard-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: var(--font-size-xl);
+        }
+
+        .dashboard-card h3 i {
+            font-size: var(--font-size-lg);
+        }
+
+        .student-details p {
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .student-details strong {
+            min-width: 150px;
+            color: var(--gray-dark);
+        }
+
+        .student-details span {
+            flex: 1;
+        }
+
+        /* Progress Bars */
+        .progress-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .progress-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .progress-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background-color: var(--gray-light);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 6px;
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .remaining-days-card {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .remaining-days-card h3 {
+            color: var(--white);
+        }
+
+        .days-count {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: var(--spacing-md) 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            padding: var(--spacing-lg);
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(var(--primary-rgb), 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .spinner-sm {
+            width: 20px;
+            height: 20px;
+            border-width: 3px;
+        }
+
+        .spinner-lg {
+            width: 60px;
+            height: 60px;
+            border-width: 5px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: var(--spacing-xl);
+            right: var(--spacing-xl);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            color: var(--white);
+            font-weight: 500;
+            z-index: var(--z-toast);
+            transform: translateX(400px);
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                        opacity 0.3s ease;
+            max-width: 400px;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            font-size: var(--font-size-xl);
+        }
+
+        .toast-success {
+            background-color: var(--success);
+            border-left: 4px solid darkgreen;
+        }
+
+        .toast-error {
+            background-color: var(--danger);
+            border-left: 4px solid darkred;
+        }
+
+        .toast-warning {
+            background-color: var(--warning);
+            color: var(--dark);
+            border-left: 4px solid darkorange;
+        }
+
+        .toast-info {
+            background-color: var(--info);
+            border-left: 4px solid darkblue;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0 var(--spacing-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xxl);
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .footer-section h3 {
+            margin-bottom: var(--spacing-lg);
+            color: var(--secondary);
+            font-size: var(--font-size-xl);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: var(--spacing-xs);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            margin-top: var(--spacing-xs);
+            flex-shrink: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-round);
+            transition: var(--transition-normal);
+            color: var(--white);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: var(--font-size-sm);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            :root {
+                --font-size-display: 2.5rem;
+                --font-size-xxxl: 1.75rem;
+            }
+            
+            .container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            :root {
+                --font-size-display: 2rem;
+                --font-size-xxxl: 1.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: var(--spacing-xl);
+            }
+            
+            .dashboard-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .hero {
+                min-height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --font-size-display: 1.75rem;
+                --font-size-xxxl: 1.25rem;
+                --font-size-xxl: 1.125rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--spacing-md) 0;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin-top: var(--spacing-md);
+            }
+            
+            .nav-links.active {
+                max-height: 500px;
+            }
+            
+            .nav-links li {
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: var(--spacing-md) 0;
+                border-bottom: 1px solid var(--gray-light);
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                position: absolute;
+                top: var(--spacing-md);
+                right: 0;
+            }
+            
+            .hero h1 {
+                font-size: var(--font-size-xxxl);
+            }
+            
+            .hero p {
+                font-size: var(--font-size-base);
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-container {
+                padding: var(--spacing-lg);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+            
+            .toast {
+                left: var(--spacing-md);
+                right: var(--spacing-md);
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --font-size-display: 1.5rem;
+                --spacing-xxl: 2rem;
+                --spacing-xl: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: var(--font-size-xxl);
+            }
+            
+            .hero {
+                padding: var(--spacing-xl) 0;
+                min-height: 400px;
+            }
+            
+            .dashboard-card {
+                padding: var(--spacing-lg);
+            }
+            
+            .days-count {
+                font-size: 3rem;
+            }
+            
+            .programs-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .hero-buttons .btn {
+                font-size: var(--font-size-sm);
+                padding: var(--spacing-sm) var(--spacing-lg);
+            }
+            
+            .btn-lg {
+                padding: var(--spacing-md) var(--spacing-lg);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+            
+            .hero, .features, .registration, footer {
+                display: none;
+            }
+            
+            .dashboard {
+                display: block !important;
+                min-height: auto;
+                background-color: white;
+            }
+            
+            .dashboard-header {
+                background: white !important;
+                color: black !important;
+                padding: 0;
+                margin-bottom: var(--spacing-lg);
+            }
+            
+            .dashboard-header h2 {
+                color: black !important;
+            }
+            
+            .dashboard-card {
+                box-shadow: none;
+                border: 1px solid var(--gray-light);
+                page-break-inside: avoid;
+            }
+            
+            .btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-to-content sr-only">Үндсэн агуулга руу алгасах</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar" aria-label="Гол цэс">
+                <a href="#" class="logo" aria-label="Neurosun Academy лого">
+                    <div class="logo-icon" aria-hidden="true">NA</div>
+                    <div class="logo-text">
+                        <h1>Neurosun Academy</h1>
+                        <span>Тархины хөгжлийн төв</span>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" aria-label="Цэс нээх" aria-expanded="false" aria-controls="main-nav">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links" id="main-nav">
+                    <li><a href="#about" class="nav-link">Бидний тухай</a></li>
+                    <li><a href="#features" class="nav-link">Үйлчилгээ</a></li>
+                    <li><a href="#programs" class="nav-link">Хөтөлбөрүүд</a></li>
+                    <li><a href="#registration" class="nav-link">Бүртгүүлэх</a></li>
+                    <li><a href="#loginModal" class="nav-link" data-modal="loginModal">Нэвтрэх</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Хүүхдийн тархины хөгжлийн сургалт</h1>
+                <p>Neurosun Academy нь Cognifit.com-тэй хамтран дэлгэцийн хамааралтай хүүхдүүдийн анхаарал төвлөрөлт, ой тогтоолт сайжруулах сургалтыг санал болгодог.</p>
+                <div class="hero-buttons">
+                    <a href="#registration" class="btn btn-lg">Бүртгүүлэх</a>
+                    <a href="#loginModal" class="btn btn-outline btn-lg" data-modal="loginModal">Тестээр нэвтрэх</a>
+                    <a href="#programs" class="btn btn-primary btn-lg">Хөтөлбөрүүд</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Бидний тухай</h2>
+                <p>Neurosun Academy нь хүүхдийн тархины хөгжилд чиглэсэн сургалтын төв бөгөөд Cognifit.com платформтой хамтран ажилладаг.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Манай сургалтууд нь хүүхдүүдийн анхаарал төвлөрөх чадвар, ой тогтоолт, бодол санааны үйл ажиллагааг сайжруулахад чиглэгдсэн. Бид дэлгэцийн хамааралтай асуудалтай хүүхдүүдэд тусгайлан зориулсан хөтөлбөрүүдийг санал болгодог.</p>
+                    <p>Манай арга барил нь шинжлэх ухаанд суурилсан бөгөөд хүүхдийн тархины нейропластик чадварыг ашиглан тэдний оюуны чадварыг хөгжүүлдэг. Сургалтын хөтөлбөр нь хүүхдийн нас, хэрэгцээнд тохируулан өөрчлөгдөж, тусгайлан бэлтгэгдсэн дасгалуудаас бүрддэг.</p>
+                    <p>Бид хүүхдийн хөгжлийн шинжлэх ухааны хамгийн сүүлийн үеийн судалгаануудыг ашиглан, хүүхдүүдэд хамгийн үр дүнтэй сургалтын аргыг санал болгодог.</p>
+                    <a href="#registration" class="btn btn-primary">Үнэгүй зөвлөгөө авах</a>
+                </div>
+                <div class="about-image">
+                    <div class="placeholder-image" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); height: 400px; display: flex; align-items: center; justify-content: center; color: white; padding: 2rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-brain" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                            <h3 style="color: white; margin-bottom: 1rem;">Тархины хөгжлийн сургалт</h3>
+                            <p>Хүүхдийн тархины бүх талыг хөгжүүлэх шинжлэх ухааны аргууд</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Бидний үйлчилгээ</h2>
+                <p>Бид хүүхдүүдэд тархины хөгжлийн бүх талыг хамарсан цогц үйлчилгээг санал болгодог</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Тархины хөгжлийн үнэлгээ</h3>
+                    <p>Хүүхдийн тархины хөгжлийн түвшинг нарийвчлан үнэлж, сул талуудыг тодорхойлох.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Анхаарал төвлөрөх сургалт</h3>
+                    <p>Хүүхдийн анхаарал төвлөрөх чадварыг сайжруулж, сургалт, хичээл дээр илүү сайн анхаарч чаддаг болгох.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <h3>Ой тогтоолтын сургалт</h3>
+                    <p>Ой тогтоолтын чадварыг хөгжүүлж, мэдээлэл илүү хурдан, үр дүнтэй санах боломжийг бий болгох.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Дэлгэцийн хамаарлын эмчилгээ</h3>
+                    <p>Дэлгэцийн хамааралтай хүүхдүүдэд зориулсан тусгай хөтөлбөрүүдийг санал болгох.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Нийгмийн чадварын сургалт</h3>
+                    <p>Хүүхдүүдийн нийгмийн харилцаа, харилцан ярилцлага, нөхөрсөг харилцааны чадварыг хөгжүүлэх.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Ахиц дэвшлийн хяналт</h3>
+                    <p>Хүүхдийн ахиц дэвшлийг тогтмол хянаж, сургалтын хөтөлбөрийг хувь хүнд тохируулах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="section programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Сургалтын хөтөлбөрүүд</h2>
+                <p>Хүүхдийн нас, хэрэгцээнд тохирсон сургалтын хөтөлбөрүүд</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="placeholder-image" style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); height: 100%; display: flex; align-items: center; justify-content: center; color: white; position: relative;">
+                            <span class="program-badge">Хамгийн их сонгогддог</span>
+                            <i class="fas fa-bullseye" style="font-size: 4rem;"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Анхаарал төвлөрөх сургалт</h3>
+                        <p>Хүүхдийн анхаарал төвлөрөх чадварыг хөгжүүлэх зорилготой сургалтын хөтөлбөр.</p>
+                        <div class="program-price">250,000₮/сар</div>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Анхаарлын түвшний үнэлгээ</li>
+                            <li><i class="fas fa-check"></i> Төвлөрөх чадварыг хөгжүүлэх дасгал</li>
+                            <li><i class="fas fa-check"></i> Дэлгэцийн хамаарлыг бууруулах арга</li>
+                            <li><i class="fas fa-check"></i> Долоо хоногт 3 удаагийн сургалт</li>
+                        </ul>
+                        <button class="btn btn-block" data-program="attention" data-action="register">Бүртгүүлэх</button>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="placeholder-image" style="background: linear-gradient(135deg, var(--secondary), var(--secondary-light)); height: 100%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-memory" style="font-size: 4rem;"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Ой тогтоолтын сургалт</h3>
+                        <p>Ой тогтоолтын чадварыг сайжруулах, мэдээлэл санах арга барилыг заах сургалт.</p>
+                        <div class="program-price">280,000₮/сар</div>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Ой тогтоолтын үнэлгээ</li>
+                            <li><i class="fas fa-check"></i> Санах ойгоо хөгжүүлэх дасгал</li>
+                            <li><i class="fas fa-check"></i> Мэдээлэл санах арга техник</li>
+                            <li><i class="fas fa-check"></i> Долоо хоногт 3 удаагийн сургалт</li>
+                        </ul>
+                        <button class="btn btn-block" data-program="memory" data-action="register">Бүртгүүлэх</button>
+                    </div>
+                </div>
+                <div class="program-card featured">
+                    <div class="program-image">
+                        <div class="placeholder-image" style="background: linear-gradient(135deg, var(--success), #5cb85c); height: 100%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <span class="program-badge">Шинэ</span>
+                            <i class="fas fa-star" style="font-size: 4rem;"></i>
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3>Цогц хөгжлийн сургалт</h3>
+                        <p>Анхаарал төвлөрөлт, ой тогтоолт, нийгмийн чадварыг нэгтгэсэн цогц хөтөлбөр.</p>
+                        <div class="program-price">350,000₮/сар</div>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Тархины хөгжлийн бүрэн үнэлгээ</li>
+                            <li><i class="fas fa-check"></i> Анхаарал төвлөрөх дасгал</li>
+                            <li><i class="fas fa-check"></i> Ой тогтоолтын дасгал</li>
+                            <li><i class="fas fa-check"></i> Долоо хоногт 5 удаагийн сургалт</li>
+                        </ul>
+                        <button class="btn btn-block" data-program="comprehensive" data-action="register">Бүртгүүлэх</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="section registration">
+        <div class="container">
+            <div class="section-title">
+                <h2>Бүртгүүлэх</h2>
+                <p>Дараах маягтыг бөглөж, хүүхдээ сургалтад бүртгүүлнэ үү</p>
+            </div>
+            <div class="form-container">
+                <form id="registrationForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childName" class="required">Хүүхдийн нэр</label>
+                            <input type="text" id="childName" name="childName" required placeholder="Хүүхдийн бүтэн нэр">
+                            <div class="error-message">Хүүхдийн нэрийг оруулна уу</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate" class="required">Төрсөн огноо</label>
+                            <input type="date" id="birthDate" name="birthDate" required max="2023-12-31">
+                            <div class="error-message">Төрсөн огноог оруулна уу</div>
+                            <small class="form-help">Хүүхдийн төрсөн он сар өдөр</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentName" class="required">Эцэг/эхийн нэр</label>
+                            <input type="text" id="parentName" name="parentName" required placeholder="Эцэг эхийн нэр">
+                            <div class="error-message">Эцэг/эхийн нэрийг оруулна уу</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="required">Утасны дугаар</label>
+                            <input type="tel" id="phone" name="phone" required pattern="[0-9]{8}" placeholder="99999999">
+                            <div class="error-message">8 оронтой утасны дугаар оруулна уу</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="required">Имэйл хаяг</label>
+                        <input type="email" id="email" name="email" required placeholder="таны@имэйл.хаяг">
+                        <div class="error-message">Зөв имэйл хаяг оруулна уу</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="program" class="required">Сонгох хөтөлбөр</label>
+                        <select id="program" name="program" required>
+                            <option value="">Хөтөлбөр сонгох</option>
+                            <option value="attention">Анхаарал төвлөрөх сургалт - 250,000₮/сар</option>
+                            <option value="memory">Ой тогтоолтын сургалт - 280,000₮/сар</option>
+                            <option value="comprehensive">Цогц хөгжлийн сургалт - 350,000₮/сар</option>
+                        </select>
+                        <div class="error-message">Хөтөлбөр сонгоно уу</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Нэмэлт мэдээлэл</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Хүүхдийн тухай нэмэлт мэдээлэл, асуулт, санал гэх мэт..."></textarea>
+                        <small class="form-help">Заавал биш талбар</small>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: flex-start; gap: var(--spacing-sm); cursor: pointer;">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required style="margin-top: 3px;">
+                            <span>Би <a href="#" style="color: var(--primary);">Үйлчилгээний нөхцөл</a>-ийг уншиж, зөвшөөрч байна</span>
+                        </label>
+                        <div class="error-message">Үйлчилгээний нөхцлийг зөвшөөрнө үү</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                        <span>Бүртгүүлэх</span>
+                        <span class="spinner spinner-sm" style="display: none;"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="loginModalTitle">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Хаах">&times;</button>
+            <h3 id="loginModalTitle">Нэвтрэх</h3>
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="loginEmail" class="required">Имэйл хаяг</label>
+                    <input type="email" id="loginEmail" name="loginEmail" required placeholder="таны@имэйл.хаяг">
+                    <div class="error-message">Зөв имэйл хаяг оруулна уу</div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="required">Нууц үг</label>
+                    <input type="password" id="loginPassword" name="loginPassword" required placeholder="Нууц үг">
+                    <div class="error-message">Нууц үгээ оруулна уу</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Нэвтрэх</span>
+                    <span class="spinner spinner-sm" style="display: none;"></span>
+                </button>
+            </form>
+            <div class="test-account">
+                <p><strong>Тест хэрэглэгч:</strong></p>
+                <p><strong>Имэйл:</strong> student.test@dev.neurosun.edu.mn</p>
+                <p><strong>Нууц үг:</strong> TestStudent123!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="termsModalTitle">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Хаах">&times;</button>
+            <h3 id="termsModalTitle">Үйлчилгээний нөхцөл</h3>
+            <div style="max-height: 400px; overflow-y: auto; padding-right: var(--spacing-md);">
+                <h4>1. Ерөнхий нөхцөл</h4>
+                <p>Neurosun Academy нь хүүхдийн тархины хөгжлийн сургалт явуулдаг байгууллага бөгөөд эдгээр нөхцөл нь манай үйлчилгээг ашиглахтай холбоотой бүх харилцааг зохицуулна.</p>
+                
+                <h4>2. Бүртгэл</h4>
+                <p>Сургалтад бүртгүүлэхдээ бүх мэдээллийг үнэн зөв оруулах ёстой. Хуурамч мэдээлэл оруулсан тохиолдолд бүртгэл цуцлагдах болно.</p>
+                
+                <h4>3. Төлбөр</h4>
+                <p>Сургалтын төлбөрийг урьдчилан төлнө. Төлбөр төлөгдсөний дараа сургалт эхэлнэ.</p>
+                
+                <h4>4. Буцаан олголт</h4>
+                <p>Сургалт эхэлснээс хойш 3 хоногийн дотор татгалзсан тохиолдолд төлбөрийн 70%-ийг буцаан олгоно.</p>
+                
+                <h4>5. Хувийн мэдээллийн хамгаалалт</h4>
+                <p>Бид таны хувийн мэдээллийг манай нууцлалын бодлогын дагуу хамгаална.</p>
+            </div>
+            <button class="btn btn-primary btn-block mt-4" data-action="close-modal">Зөвшөөрч байна</button>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard" aria-labelledby="dashboardTitle">
+        <div class="dashboard-header">
+            <div class="container">
+                <h2 id="dashboardTitle">Хувийн кабинет</h2>
+                <p>Хүүхдийн сургалтын ахиц, үлдэгдэл хоног зэрэг мэдээллийг хянах</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="dashboard-content">
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-user"></i> Хүүхдийн мэдээлэл</h3>
+                    <div class="student-details" id="studentDetails">
+                        <!-- JavaScript энд өгөгдөл оруулна -->
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-chart-line"></i> Ахиц дэвшил</h3>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="progress-label">Анхаарал төвлөрөх чадвар</span>
+                            <span class="progress-value" id="attentionPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="attentionProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="progress-label">Ой тогтоолтын чадвар</span>
+                            <span class="progress-value" id="memoryPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="memoryProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="progress-label">Бодол санааны хурд</span>
+                            <span class="progress-value" id="speedPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="speedProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="progress-label">Нийгмийн харилцаа</span>
+                            <span class="progress-value" id="socialPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="socialProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-card remaining-days-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Үлдэгдэл хоног</h3>
+                    <div class="days-count" id="remainingDays">0</div>
+                    <p>Сургалтын хугацаа дуусахад</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-tasks"></i> Дараагийн сургалтууд</h3>
+                    <div id="upcomingSessions">
+                        <!-- JavaScript энд өгөгдөл оруулна -->
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-actions">
+                <button id="logoutBtn" class="btn btn-outline">Гарах</button>
+                <button id="printReportBtn" class="btn btn-primary"><i class="fas fa-print"></i> Тайлан хэвлэх</button>
+                <button id="refreshDashboardBtn" class="btn btn-success"><i class="fas fa-sync-alt"></i> Шинэчлэх</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="no-print">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Neurosun Academy</h3>
+                    <p>Хүүхдийн тархины хөгжлийн сургалтын төв. Бид хүүхдүүдийн ирээдүйг тэдний тархины хөгжлөөр бүтээдэг.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/neurosun.academy" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/neurosun.academy" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/neurosun" aria-label="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@neurosunacademy" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Холбоос</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">Бидний тухай</a></li>
+                        <li><a href="#features">Үйлчилгээ</a></li>
+                        <li><a href="#programs">Хөтөлбөрүүд</a></li>
+                        <li><a href="#registration">Бүртгүүлэх</a></li>
+                        <li><a href="#" data-modal="termsModal">Үйлчилгээний нөхцөл</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Холбоо барих</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Улаанбаатар хот, Сүхбаатар дүүрэг, 1-р хороо, Нэгдсэн гудамж 5</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+(976) 7011-2233, 7011-2244</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@neurosun.mn</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Даваа - Баасан: 09:00 - 18:00<br>Бямба: 10:00 - 16:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear">2024</span> Neurosun Academy. Бүх эрх хуулиар хамгаалагдсан.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Cognifit.com-ийн албан ёсын түнш</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- External JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
+    <script>
+        // ============================================================================
+        // CONFIGURATION
+        // ============================================================================
+        
+        const CONFIG = {
+            // Environment Detection
+            ENVIRONMENT: (() => {
+                const hostname = window.location.hostname;
+                if (hostname.includes('localhost') || hostname === '127.0.0.1') return 'development';
+                if (hostname.includes('dev.')) return 'development';
+                if (hostname.includes('staging.')) return 'staging';
+                if (hostname.includes('test.')) return 'testing';
+                return 'production';
+            })(),
+            
+            // API Configuration
+            API: {
+                DEVELOPMENT: {
+                    BASE_URL: 'https://dev-api.neurosun.edu.mn',
+                    TIMEOUT: 30000,
+                    MOCK_ENABLED: true
+                },
+                STAGING: {
+                    BASE_URL: 'https://staging-api.neurosun.com',
+                    TIMEOUT: 30000,
+                    MOCK_ENABLED: false
+                },
+                PRODUCTION: {
+                    BASE_URL: 'https://api.neurosun.mn',
+                    TIMEOUT: 30000,
+                    MOCK_ENABLED: false
+                },
+                TESTING: {
+                    BASE_URL: 'https://test-api.neurosun.edu.mn',
+                    TIMEOUT: 30000,
+                    MOCK_ENABLED: true
+                }
+            },
+            
+            // Domain Configuration
+            DOMAINS: {
+                DEVELOPMENT: {
+                    MAIN: 'https://dev.neurosun.edu.mn',
+                    API: 'https://dev-api.neurosun.edu.mn',
+                    CDN: 'https://cdn.dev.neurosun.edu.mn',
+                    MEDIA: 'https://media.dev.neurosun.edu.mn'
+                },
+                PRODUCTION: {
+                    MAIN: 'https://www.neurosun.mn',
+                    API: 'https://api.neurosun.mn',
+                    CDN: 'https://cdn.neurosun.mn',
+                    MEDIA: 'https://media.neurosun.mn'
+                },
+                STAGING: {
+                    MAIN: 'https://staging.neurosun.com',
+                    API: 'https://staging-api.neurosun.com',
+                    CDN: 'https://staging-cdn.neurosun.com',
+                    MEDIA: 'https://staging-media.neurosun.com'
+                }
+            },
+            
+            // Test User Accounts
+            TEST_USERS: [
+                {
+                    id: 'USR-DEV-001',
+                    email: 'student.test@dev.neurosun.edu.mn',
+                    password: 'TestStudent123!',
+                    role: 'student',
+                    name: 'Тэс хэрэглэгч',
+                    childName: 'Батсайхан',
+                    birthDate: '2015-05-10',
+                    parentName: 'Ганболд',
+                    phone: '99112233',
+                    program: 'Цогц хөгжлийн сургалт - 350,000₮/сар',
+                    startDate: '2024-01-15',
+                    endDate: '2024-07-15',
+                    registrationId: 'REG-2024-001',
+                    avatar: null
+                },
+                {
+                    id: 'USR-DEV-002',
+                    email: 'parent.test@dev.neurosun.edu.mn',
+                    password: 'TestParent123!',
+                    role: 'parent',
+                    name: 'Эцэг эх',
+                    childName: 'Энхжин',
+                    birthDate: '2016-08-20',
+                    parentName: 'Долгор',
+                    phone: '99223344',
+                    program: 'Анхаарал төвлөрөх сургалт - 250,000₮/сар',
+                    startDate: '2024-02-01',
+                    endDate: '2024-05-01',
+                    registrationId: 'REG-2024-002',
+                    avatar: null
+                }
+            ],
+            
+            // Mock Data for Development
+            MOCK_DATA: {
+                PROGRESS: {
+                    attention: { current: 75, target: 90, history: [60, 65, 70, 75] },
+                    memory: { current: 60, target: 85, history: [45, 50, 55, 60] },
+                    speed: { current: 80, target: 95, history: [65, 70, 75, 80] },
+                    social: { current: 70, target: 90, history: [50, 55, 60, 70] }
+                },
+                SESSIONS: [
+                    {
+                        id: 'SESS-001',
+                        date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+                        time: '10:00',
+                        duration: 60,
+                        topic: 'Анхаарал төвлөрөх сургалт',
+                        instructor: 'Б. Энхболд',
+                        status: 'scheduled',
+                        meetingLink: 'https://meet.neurosun.mn/sess-001'
+                    },
+                    {
+                        id: 'SESS-002',
+                        date: new Date(Date.now() + 2 * 86400000).toISOString().split('T')[0],
+                        time: '14:00',
+                        duration: 60,
+                        topic: 'Ой тогтоолтын дасгал',
+                        instructor: 'Ц. Гэрэлмаа',
+                        status: 'scheduled',
+                        meetingLink: 'https://meet.neurosun.mn/sess-002'
+                    },
+                    {
+                        id: 'SESS-003',
+                        date: new Date(Date.now() + 5 * 86400000).toISOString().split('T')[0],
+                        time: '11:00',
+                        duration: 60,
+                        topic: 'Нийгмийн харилцааны сургалт',
+                        instructor: 'Д. Баярмаа',
+                        status: 'scheduled',
+                        meetingLink: 'https://meet.neurosun.mn/sess-003'
+                    }
+                ],
+                INVOICES: [
+                    {
+                        id: 'INV-2024-001',
+                        date: '2024-01-15',
+                        amount: 350000,
+                        status: 'paid',
+                        dueDate: '2024-01-15'
+                    },
+                    {
+                        id: 'INV-2024-002',
+                        date: '2024-02-15',
+                        amount: 350000,
+                        status: 'pending',
+                        dueDate: '2024-02-15'
+                    }
+                ]
+            },
+            
+            // Feature Flags
+            FEATURES: {
+                ENABLE_REGISTRATION: true,
+                ENABLE_LOGIN: true,
+                ENABLE_MOCK_API: true,
+                ENABLE_ANALYTICS: true,
+                DEBUG_MODE: CONFIG.ENVIRONMENT === 'development'
+            },
+            
+            // Analytics
+            ANALYTICS: {
+                GOOGLE_ANALYTICS_ID: 'UA-XXXXXX-X',
+                FACEBOOK_PIXEL_ID: 'XXXXXXXXXXXXXXX',
+                SENTRY_DSN: 'https://xxxxxxxxxxxxxxxxxxxxxx@sentry.io/xxxxxx'
+            },
+            
+            // Cache Configuration
+            CACHE: {
+                USER_DATA_TTL: 5 * 60 * 1000, // 5 minutes
+                PROGRESS_DATA_TTL: 10 * 60 * 1000, // 10 minutes
+                SESSIONS_TTL: 15 * 60 * 1000 // 15 minutes
+            }
+        };
+        
+        // Get current environment config
+        const CURRENT_API_CONFIG = CONFIG.API[CONFIG.ENVIRONMENT.toUpperCase()] || CONFIG.API.DEVELOPMENT;
+        const CURRENT_DOMAIN_CONFIG = CONFIG.DOMAINS[CONFIG.ENVIRONMENT.toUpperCase()] || CONFIG.DOMAINS.DEVELOPMENT;
+        
+        // ============================================================================
+        // APPLICATION STATE
+        // ============================================================================
+        
+        const AppState = {
+            isLoggedIn: false,
+            currentUser: null,
+            authToken: localStorage.getItem('neurosun_auth_token') || null,
+            userData: JSON.parse(localStorage.getItem('neurosun_user_data')) || null,
+            activeModal: null,
+            isLoading: false,
+            isOnline: navigator.onLine,
+            cache: {
+                userProfile: null,
+                progressData: null,
+                sessions: null,
+                lastUpdated: null
+            }
+        };
+        
+        // ============================================================================
+        // DOM ELEMENTS
+        // ============================================================================
+        
+        const DOM = {
+            // Main elements
+            body: document.body,
+            header: document.querySelector('header'),
+            
+            // Navigation
+            mobileMenuBtn: document.querySelector('.mobile-menu-btn'),
+            navLinks: document.querySelector('.nav-links'),
+            
+            // Modals
+            loginModal: document.getElementById('loginModal'),
+            termsModal: document.getElementById('termsModal'),
+            
+            // Forms
+            loginForm: document.getElementById('loginForm'),
+            registrationForm: document.getElementById('registrationForm'),
+            
+            // Buttons
+            submitBtn: document.getElementById('submitBtn'),
+            logoutBtn: document.getElementById('logoutBtn'),
+            printReportBtn: document.getElementById('printReportBtn'),
+            refreshDashboardBtn: document.getElementById('refreshDashboardBtn'),
+            
+            // Dashboard elements
+            dashboard: document.getElementById('dashboard'),
+            studentDetails: document.getElementById('studentDetails'),
+            upcomingSessions: document.getElementById('upcomingSessions'),
+            remainingDays: document.getElementById('remainingDays'),
+            
+            // Progress bars
+            attentionProgress: document.getElementById('attentionProgress'),
+            memoryProgress: document.getElementById('memoryProgress'),
+            speedProgress: document.getElementById('speedProgress'),
+            socialProgress: document.getElementById('socialProgress'),
+            attentionPercent: document.getElementById('attentionPercent'),
+            memoryPercent: document.getElementById('memoryPercent'),
+            speedPercent: document.getElementById('speedPercent'),
+            socialPercent: document.getElementById('socialPercent'),
+            
+            // Footer
+            currentYear: document.getElementById('currentYear'),
+            footerLinks: document.querySelector('.footer-links'),
+            
+            // Toast container
+            toastContainer: document.getElementById('toastContainer')
+        };
+        
+        // ============================================================================
+        // UTILITY FUNCTIONS
+        // ============================================================================
+        
+        class Utils {
+            static formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('mn-MN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+            
+            static formatCurrency(amount) {
+                return new Intl.NumberFormat('mn-MN', {
+                    style: 'currency',
+                    currency: 'MNT',
+                    minimumFractionDigits: 0
+                }).format(amount);
+            }
+            
+            static generateId(prefix = '') {
+                return `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            }
+            
+            static debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+            
+            static throttle(func, limit) {
+                let inThrottle;
+                return function() {
+                    const args = arguments;
+                    const context = this;
+                    if (!inThrottle) {
+                        func.apply(context, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                };
+            }
+            
+            static validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            static validatePhone(phone) {
+                const re = /^[0-9]{8}$/;
+                return re.test(phone);
+            }
+            
+            static setLoading(element, isLoading) {
+                if (isLoading) {
+                    element.disabled = true;
+                    const spinner = element.querySelector('.spinner');
+                    if (spinner) spinner.style.display = 'inline-block';
+                    if (element.querySelector('span')) {
+                        const originalText = element.querySelector('span').textContent;
+                        element.setAttribute('data-original-text', originalText);
+                        element.querySelector('span').textContent = 'Түр хүлээнэ үү...';
+                    }
+                } else {
+                    element.disabled = false;
+                    const spinner = element.querySelector('.spinner');
+                    if (spinner) spinner.style.display = 'none';
+                    if (element.querySelector('span') && element.getAttribute('data-original-text')) {
+                        element.querySelector('span').textContent = element.getAttribute('data-original-text');
+                    }
+                }
+            }
+            
+            static scrollToElement(elementId) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    window.scrollTo({
+                        top: element.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            static updateCopyrightYear() {
+                if (DOM.currentYear) {
+                    DOM.currentYear.textContent = new Date().getFullYear();
+                }
+            }
+        }
+        
+        // ============================================================================
+        // TOAST NOTIFICATION SYSTEM
+        // ============================================================================
+        
+        class Toast {
+            static show(message, type = 'info', duration = 3000) {
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type}`;
+                
+                let icon = 'info-circle';
+                switch (type) {
+                    case 'success': icon = 'check-circle'; break;
+                    case 'error': icon = 'exclamation-circle'; break;
+                    case 'warning': icon = 'exclamation-triangle'; break;
+                    case 'info': icon = 'info-circle'; break;
+                }
+                
+                toast.innerHTML = `
+                    <i class="fas fa-${icon}"></i>
+                    <span>${message}</span>
+                `;
+                
+                toast.setAttribute('role', 'alert');
+                toast.setAttribute('aria-live', 'assertive');
+                toast.setAttribute('aria-atomic', 'true');
+                
+                DOM.toastContainer.appendChild(toast);
+                
+                // Trigger animation
+                setTimeout(() => toast.classList.add('show'), 10);
+                
+                // Auto remove
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                }, duration);
+                
+                // Click to dismiss
+                toast.addEventListener('click', () => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                });
+                
+                return toast;
+            }
+            
+            static success(message, duration = 3000) {
+                return this.show(message, 'success', duration);
+            }
+            
+            static error(message, duration = 4000) {
+                return this.show(message, 'error', duration);
+            }
+            
+            static warning(message, duration = 3000) {
+                return this.show(message, 'warning', duration);
+            }
+            
+            static info(message, duration = 3000) {
+                return this.show(message, 'info', duration);
+            }
+        }
+        
+        // ============================================================================
+        // FORM VALIDATION SYSTEM
+        // ============================================================================
+        
+        class FormValidator {
+            static init(formElement) {
+                const inputs = formElement.querySelectorAll('input, select, textarea');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('blur', () => this.validateField(input));
+                    input.addEventListener('input', () => this.clearError(input));
+                    
+                    // Real-time validation for certain fields
+                    if (input.type === 'email' || input.type === 'tel') {
+                        input.addEventListener('input', Utils.debounce(() => this.validateField(input), 500));
+                    }
+                });
+                
+                formElement.addEventListener('submit', (e) => {
+                    if (!this.validateForm(formElement)) {
+                        e.preventDefault();
+                        Toast.error('Маягтыг зөв бөглөнө үү');
+                    }
+                });
+            }
+            
+            static validateField(field) {
+                const formGroup = field.closest('.form-group');
+                if (!formGroup) return true;
+                
+                let isValid = true;
+                let message = '';
+                
+                // Required validation
+                if (field.hasAttribute('required') && !field.value.trim()) {
+                    isValid = false;
+                    message = 'Энэ талбарыг бөглөнө үү';
+                }
+                
+                // Email validation
+                if (field.type === 'email' && field.value) {
+                    if (!Utils.validateEmail(field.value)) {
+                        isValid = false;
+                        message = 'Зөв имэйл хаяг оруулна уу';
+                    }
+                }
+                
+                // Phone validation
+                if (field.type === 'tel' && field.value && field.hasAttribute('pattern')) {
+                    if (!Utils.validatePhone(field.value)) {
+                        isValid = false;
+                        message = '8 оронтой утасны дугаар оруулна уу';
+                    }
+                }
+                
+                // Date validation
+                if (field.type === 'date' && field.value) {
+                    const date = new Date(field.value);
+                    const today = new Date();
+                    if (date > today) {
+                        isValid = false;
+                        message = 'Ирээдүйн огноо оруулах боломжгүй';
+                    }
+                }
+                
+                // Update UI
+                if (!isValid) {
+                    formGroup.classList.add('has-error');
+                    const errorElement = formGroup.querySelector('.error-message');
+                    if (errorElement) errorElement.textContent = message;
+                    field.setAttribute('aria-invalid', 'true');
+                } else {
+                    field.setAttribute('aria-invalid', 'false');
+                }
+                
+                return isValid;
+            }
+            
+            static clearError(field) {
+                const formGroup = field.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.remove('has-error');
+                }
+                field.removeAttribute('aria-invalid');
+            }
+            
+            static validateForm(form) {
+                let isValid = true;
+                const inputs = form.querySelectorAll('input, select, textarea');
+                
+                inputs.forEach(input => {
+                    if (!this.validateField(input)) {
+                        isValid = false;
+                        
+                        // Scroll to first error
+                        if (isValid === false) {
+                            input.focus();
+                            isValid = null; // Prevent further scrolling
+                        }
+                    }
+                });
+                
+                return isValid;
+            }
+            
+            static getFormData(form) {
+                const formData = new FormData(form);
+                const data = {};
+                
+                formData.forEach((value, key) => {
+                    if (data[key]) {
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
+                        } else {
+                            data[key] = [data[key], value];
+                        }
+                    } else {
+                        data[key] = value;
+                    }
+                });
+                
+                return data;
+            }
+        }
+        
+        // ============================================================================
+        // MODAL SYSTEM
+        // ============================================================================
+        
+        class ModalSystem {
+            static init() {
+                // Open modal buttons
+                document.querySelectorAll('[data-modal]').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const modalId = button.getAttribute('data-modal');
+                        this.openModal(modalId);
+                    });
+                });
+                
+                // Close modal buttons
+                document.querySelectorAll('.close-modal, [data-action="close-modal"]').forEach(button => {
+                    button.addEventListener('click', () => this.closeModal());
+                });
+                
+                // Close on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && AppState.activeModal) {
+                        this.closeModal();
+                    }
+                });
+                
+                // Close on outside click
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            this.closeModal();
+                        }
+                    });
+                });
+            }
+            
+            static openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+                
+                AppState.activeModal = modalId;
+                modal.classList.add('active');
+                modal.setAttribute('aria-hidden', 'false');
+                
+                // Focus on first input
+                const firstInput = modal.querySelector('input, textarea, select, button');
+                if (firstInput) firstInput.focus();
+                
+                // Prevent body scrolling
+                DOM.body.style.overflow = 'hidden';
+                
+                // Analytics
+                if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                    console.log(`Modal opened: ${modalId}`);
+                }
+            }
+            
+            static closeModal() {
+                if (!AppState.activeModal) return;
+                
+                const modal = document.getElementById(AppState.activeModal);
+                if (modal) {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                    
+                    // Reset form if exists
+                    const form = modal.querySelector('form');
+                    if (form) {
+                        form.reset();
+                        FormValidator.validateForm(form);
+                    }
+                }
+                
+                AppState.activeModal = null;
+                DOM.body.style.overflow = '';
+                
+                // Analytics
+                if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                    console.log(`Modal closed: ${AppState.activeModal}`);
+                }
+            }
+        }
+        
+        // ============================================================================
+        // API SERVICE
+        // ============================================================================
+        
+        class ApiService {
+            constructor() {
+                this.baseUrl = CURRENT_API_CONFIG.BASE_URL;
+                this.mockEnabled = CURRENT_API_CONFIG.MOCK_ENABLED && CONFIG.FEATURES.ENABLE_MOCK_API;
+                this.requestCount = 0;
+            }
+            
+            async request(endpoint, options = {}) {
+                this.requestCount++;
+                const requestId = `req_${this.requestCount}_${Date.now()}`;
+                
+                // If mock API is enabled and not an auth endpoint, return mock data
+                if (this.mockEnabled && !endpoint.includes('/auth/')) {
+                    return this.mockRequest(endpoint, options, requestId);
+                }
+                
+                const url = `${this.baseUrl}${endpoint}`;
+                
+                const requestOptions = {
+                    ...options,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-Request-ID': requestId,
+                        'X-Client-Version': '1.0.0',
+                        'X-Environment': CONFIG.ENVIRONMENT,
+                        ...options.headers
+                    }
+                };
+                
+                // Add authorization token
+                if (AppState.authToken) {
+                    requestOptions.headers['Authorization'] = `Bearer ${AppState.authToken}`;
+                }
+                
+                // Log request in debug mode
+                if (CONFIG.FEATURES.DEBUG_MODE) {
+                    console.log(`API Request [${requestId}]:`, {
+                        url,
+                        method: options.method || 'GET',
+                        headers: requestOptions.headers,
+                        body: options.body
+                    });
+                }
+                
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), CURRENT_API_CONFIG.TIMEOUT);
+                    
+                    requestOptions.signal = controller.signal;
+                    
+                    const startTime = Date.now();
+                    const response = await fetch(url, requestOptions);
+                    const duration = Date.now() - startTime;
+                    
+                    clearTimeout(timeoutId);
+                    
+                    // Log response in debug mode
+                    if (CONFIG.FEATURES.DEBUG_MODE) {
+                        console.log(`API Response [${requestId}]:`, {
+                            status: response.status,
+                            statusText: response.statusText,
+                            duration: `${duration}ms`
+                        });
+                    }
+                    
+                    if (!response.ok) {
+                        throw await this.handleError(response, requestId);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Cache successful responses
+                    if (response.ok && options.method === 'GET') {
+                        this.cacheResponse(endpoint, data);
+                    }
+                    
+                    return data;
+                    
+                } catch (error) {
+                    console.error(`API Request Failed [${requestId}]:`, error);
+                    
+                    // Fallback to mock data if enabled
+                    if (this.mockEnabled) {
+                        console.warn(`Falling back to mock data for: ${endpoint}`);
+                        return this.mockRequest(endpoint, options, requestId);
+                    }
+                    
+                    throw error;
+                }
+            }
+            
+            async handleError(response, requestId) {
+                let errorData;
+                try {
+                    errorData = await response.json();
+                } catch {
+                    errorData = { message: response.statusText || 'Unknown error' };
+                }
+                
+                const error = {
+                    status: response.status,
+                    statusText: response.statusText,
+                    message: errorData.message || `HTTP ${response.status}`,
+                    data: errorData,
+                    requestId
+                };
+                
+                // Show toast for certain errors
+                if (response.status === 401) {
+                    Toast.error('Нэвтрэх эрх хүчингүй болсон. Дахин нэвтрэнэ үү.');
+                    AuthService.logout();
+                } else if (response.status === 403) {
+                    Toast.error('Энэ үйлдлийг хийх эрхгүй байна.');
+                } else if (response.status === 404) {
+                    Toast.error('Хүсэлт илгээсэн эх сурвалж олдсонгүй.');
+                } else if (response.status >= 500) {
+                    Toast.error('Серверийн алдаа гарлаа. Дараа дахин оролдоно уу.');
+                }
+                
+                return error;
+            }
+            
+            cacheResponse(endpoint, data) {
+                const cacheKey = `api_cache_${endpoint}`;
+                const cacheData = {
+                    data,
+                    timestamp: Date.now(),
+                    endpoint
+                };
+                
+                try {
+                    localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+                } catch (e) {
+                    console.warn('Failed to cache API response:', e);
+                }
+            }
+            
+            getCachedResponse(endpoint, maxAge = 5 * 60 * 1000) {
+                const cacheKey = `api_cache_${endpoint}`;
+                try {
+                    const cached = localStorage.getItem(cacheKey);
+                    if (!cached) return null;
+                    
+                    const cacheData = JSON.parse(cached);
+                    const age = Date.now() - cacheData.timestamp;
+                    
+                    if (age > maxAge) {
+                        localStorage.removeItem(cacheKey);
+                        return null;
+                    }
+                    
+                    return cacheData.data;
+                } catch (e) {
+                    return null;
+                }
+            }
+            
+            // Mock API Implementation
+            async mockRequest(endpoint, options, requestId) {
+                // Simulate network delay
+                await new Promise(resolve => 
+                    setTimeout(resolve, Math.random() * 500 + 200)
+                );
+                
+                // Simulate occasional errors (5% chance)
+                if (Math.random() < 0.05) {
+                    const errorCodes = [400, 401, 403, 404, 500];
+                    const errorCode = errorCodes[Math.floor(Math.random() * errorCodes.length)];
+                    
+                    throw {
+                        status: errorCode,
+                        message: `Mock API Error: ${errorCode}`,
+                        data: null,
+                        requestId
+                    };
+                }
+                
+                // Return mock responses based on endpoint
+                switch (endpoint) {
+                    case '/api/v1/auth/login':
+                        return this.mockLoginResponse(JSON.parse(options.body || '{}'));
+                    
+                    case '/api/v1/registration/submit':
+                        return this.mockRegistrationResponse(JSON.parse(options.body || '{}'));
+                    
+                    case '/api/v1/users/profile':
+                        return this.mockUserProfile();
+                    
+                    case '/api/v1/progress':
+                        return this.mockProgressData();
+                    
+                    case '/api/v1/sessions/upcoming':
+                        return this.mockUpcomingSessions();
+                    
+                    case '/api/v1/programs':
+                        return this.mockPrograms();
+                    
+                    default:
+                        return {
+                            success: true,
+                            message: 'Mock API Response',
+                            data: { 
+                                endpoint, 
+                                method: options.method || 'GET',
+                                mock: true,
+                                requestId
+                            },
+                            timestamp: new Date().toISOString()
+                        };
+                }
+            }
+            
+            mockLoginResponse(body) {
+                const { email, password } = body;
+                const testUser = CONFIG.TEST_USERS.find(u => 
+                    u.email === email && u.password === password
+                );
+                
+                if (testUser) {
+                    return {
+                        success: true,
+                        message: 'Амжилттай нэвтэрлээ',
+                        data: {
+                            token: `mock_jwt_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                            user: {
+                                ...testUser,
+                                remainingDays: Math.floor((new Date(testUser.endDate) - new Date()) / (1000 * 60 * 60 * 24))
+                            }
+                        }
+                    };
+                }
+                
+                return {
+                    success: false,
+                    message: 'Имэйл эсвэл нууц үг буруу байна',
+                    data: null
+                };
+            }
+            
+            mockRegistrationResponse(body) {
+                return {
+                    success: true,
+                    message: 'Бүртгэл амжилттай хийгдлээ',
+                    data: {
+                        registrationId: 'REG-' + Date.now(),
+                        childName: body.childName,
+                        parentName: body.parentName,
+                        email: body.email,
+                        program: body.program,
+                        registrationDate: new Date().toISOString(),
+                        status: 'pending',
+                        nextSteps: [
+                            'Бид тантай 24 цагийн дотор холбогдох болно',
+                            'Эхний үнэлгээний хуваарийг тогтооно',
+                            'Төлбөрийн мэдээлэл илгээнэ'
+                        ]
+                    }
+                };
+            }
+            
+            mockUserProfile() {
+                const user = CONFIG.TEST_USERS[0];
+                return {
+                    success: true,
+                    data: {
+                        user: {
+                            ...user,
+                            remainingDays: Math.floor((new Date(user.endDate) - new Date()) / (1000 * 60 * 60 * 24)),
+                            joinDate: '2024-01-10',
+                            status: 'active',
+                            lastLogin: new Date().toISOString()
+                        }
+                    }
+                };
+            }
+            
+            mockProgressData() {
+                return {
+                    success: true,
+                    data: CONFIG.MOCK_DATA.PROGRESS
+                };
+            }
+            
+            mockUpcomingSessions() {
+                return {
+                    success: true,
+                    data: {
+                        sessions: CONFIG.MOCK_DATA.SESSIONS,
+                        total: CONFIG.MOCK_DATA.SESSIONS.length,
+                        upcomingCount: CONFIG.MOCK_DATA.SESSIONS.length
+                    }
+                };
+            }
+            
+            mockPrograms() {
+                return {
+                    success: true,
+                    data: {
+                        programs: [
+                            {
+                                id: 'PROG-001',
+                                name: 'Анхаарал төвлөрөх сургалт',
+                                description: 'Анхаарал төвлөрөх чадварыг хөгжүүлэх сургалт',
+                                price: 250000,
+                                duration: '3 сар',
+                                features: ['Анхаарлын үнэлгээ', 'Төвлөрөх дасгал', 'Дэлгэцийн хамаарлыг бууруулах']
+                            },
+                            {
+                                id: 'PROG-002',
+                                name: 'Ой тогтоолтын сургалт',
+                                description: 'Ой тогтоолтын чадварыг хөгжүүлэх сургалт',
+                                price: 280000,
+                                duration: '3 сар',
+                                features: ['Ой тогтоолтын үнэлгээ', 'Санах ойн дасгал', 'Мэдээлэл санах техник']
+                            },
+                            {
+                                id: 'PROG-003',
+                                name: 'Цогц хөгжлийн сургалт',
+                                description: 'Тархины бүх талыг хөгжүүлэх цогц сургалт',
+                                price: 350000,
+                                duration: '6 сар',
+                                features: ['Тархины үнэлгээ', 'Анхаарал төвлөрөх дасгал', 'Ой тогтоолтын дасгал', 'Нийгмийн чадвар']
+                            }
+                        ]
+                    }
+                };
+            }
+            
+            // API Methods
+            async login(email, password) {
+                return this.request('/api/v1/auth/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password })
+                });
+            }
+            
+            async register(formData) {
+                return this.request('/api/v1/registration/submit', {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                });
+            }
+            
+            async getUserProfile() {
+                return this.request('/api/v1/users/profile');
+            }
+            
+            async getProgressData() {
+                return this.request('/api/v1/progress');
+            }
+            
+            async getUpcomingSessions() {
+                return this.request('/api/v1/sessions/upcoming');
+            }
+            
+            async getPrograms() {
+                return this.request('/api/v1/programs');
+            }
+            
+            async validateToken() {
+                if (!AppState.authToken) return false;
+                
+                try {
+                    const response = await this.request('/api/v1/auth/validate');
+                    return response.valid === true;
+                } catch {
+                    return false;
+                }
+            }
+        }
+        
+        // Initialize API Service
+        const api = new ApiService();
+        
+        // ============================================================================
+        // AUTHENTICATION SERVICE
+        // ============================================================================
+        
+        class AuthService {
+            static async login(email, password) {
+                try {
+                    const response = await api.login(email, password);
+                    
+                    if (response.success && response.data?.token) {
+                        // Save token and user data
+                        localStorage.setItem('neurosun_auth_token', response.data.token);
+                        localStorage.setItem('neurosun_user_data', JSON.stringify(response.data.user));
+                        
+                        AppState.authToken = response.data.token;
+                        AppState.currentUser = response.data.user;
+                        AppState.isLoggedIn = true;
+                        
+                        // Analytics
+                        if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                            console.log('User logged in:', response.data.user.email);
+                        }
+                        
+                        return { success: true, user: response.data.user };
+                    } else {
+                        return { success: false, message: response.message || 'Нэвтрэхэд алдаа гарлаа' };
+                    }
+                } catch (error) {
+                    return { 
+                        success: false, 
+                        message: 'Сервертэй холбогдоход алдаа гарлаа. Дараа дахин оролдоно уу.' 
+                    };
+                }
+            }
+            
+            static async autoLogin() {
+                const token = localStorage.getItem('neurosun_auth_token');
+                const userData = localStorage.getItem('neurosun_user_data');
+                
+                if (!token || !userData) return false;
+                
+                try {
+                    // In production, validate token with server
+                    if (CONFIG.ENVIRONMENT === 'production') {
+                        const isValid = await api.validateToken();
+                        if (!isValid) {
+                            this.logout();
+                            return false;
+                        }
+                    }
+                    
+                    // Token is valid (or we're in development)
+                    AppState.authToken = token;
+                    AppState.currentUser = JSON.parse(userData);
+                    AppState.isLoggedIn = true;
+                    
+                    return true;
+                    
+                } catch (error) {
+                    console.error('Auto-login failed:', error);
+                    this.logout();
+                    return false;
+                }
+            }
+            
+            static logout() {
+                // Clear localStorage
+                localStorage.removeItem('neurosun_auth_token');
+                localStorage.removeItem('neurosun_user_data');
+                
+                // Clear sessionStorage
+                sessionStorage.clear();
+                
+                // Clear AppState
+                AppState.authToken = null;
+                AppState.currentUser = null;
+                AppState.isLoggedIn = false;
+                AppState.cache = {
+                    userProfile: null,
+                    progressData: null,
+                    sessions: null,
+                    lastUpdated: null
+                };
+                
+                // Analytics
+                if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                    console.log('User logged out');
+                }
+            }
+            
+            static isAuthenticated() {
+                return AppState.isLoggedIn && AppState.authToken !== null;
+            }
+            
+            static getCurrentUser() {
+                return AppState.currentUser;
+            }
+        }
+        
+        // ============================================================================
+        // DASHBOARD SERVICE
+        // ============================================================================
+        
+        class DashboardService {
+            static async loadDashboardData(forceRefresh = false) {
+                try {
+                    let userProfile, progressData, sessionsData;
+                    
+                    // Load user profile
+                    if (!forceRefresh && AppState.cache.userProfile) {
+                        userProfile = AppState.cache.userProfile;
+                    } else {
+                        const userResponse = await api.getUserProfile();
+                        if (userResponse.success) {
+                            userProfile = userResponse.data;
+                            AppState.cache.userProfile = userProfile;
+                        }
+                    }
+                    
+                    // Load progress data
+                    if (!forceRefresh && AppState.cache.progressData) {
+                        progressData = AppState.cache.progressData;
+                    } else {
+                        const progressResponse = await api.getProgressData();
+                        if (progressResponse.success) {
+                            progressData = progressResponse.data;
+                            AppState.cache.progressData = progressData;
+                        }
+                    }
+                    
+                    // Load upcoming sessions
+                    if (!forceRefresh && AppState.cache.sessions) {
+                        sessionsData = AppState.cache.sessions;
+                    } else {
+                        const sessionsResponse = await api.getUpcomingSessions();
+                        if (sessionsResponse.success) {
+                            sessionsData = sessionsResponse.data;
+                            AppState.cache.sessions = sessionsData;
+                        }
+                    }
+                    
+                    // Update cache timestamp
+                    AppState.cache.lastUpdated = Date.now();
+                    
+                    return {
+                        user: userProfile?.user || AppState.currentUser,
+                        progress: progressData || CONFIG.MOCK_DATA.PROGRESS,
+                        sessions: sessionsData?.sessions || CONFIG.MOCK_DATA.SESSIONS,
+                        remainingDays: this.calculateRemainingDays(userProfile?.user?.endDate || AppState.currentUser?.endDate)
+                    };
+                    
+                } catch (error) {
+                    console.error('Dashboard data loading failed:', error);
+                    
+                    // Return mock data as fallback
+                    return this.getMockData();
+                }
+            }
+            
+            static calculateRemainingDays(endDate) {
+                if (!endDate) return 0;
+                
+                const end = new Date(endDate);
+                const now = new Date();
+                const diffTime = end - now;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                return diffDays > 0 ? diffDays : 0;
+            }
+            
+            static getMockData() {
+                return {
+                    user: AppState.currentUser || CONFIG.TEST_USERS[0],
+                    progress: CONFIG.MOCK_DATA.PROGRESS,
+                    sessions: CONFIG.MOCK_DATA.SESSIONS,
+                    remainingDays: Math.floor(Math.random() * 180) + 1
+                };
+            }
+            
+            static updateDashboardUI(data) {
+                if (!data) return;
+                
+                // Update user info
+                if (data.user) {
+                    this.updateUserInfo(data.user);
+                }
+                
+                // Update progress bars
+                if (data.progress) {
+                    this.updateProgressBars(data.progress);
+                }
+                
+                // Update upcoming sessions
+                if (data.sessions) {
+                    this.updateUpcomingSessions(data.sessions);
+                }
+                
+                // Update remaining days
+                if (data.remainingDays !== undefined) {
+                    DOM.remainingDays.textContent = data.remainingDays;
+                }
+            }
+            
+            static updateUserInfo(user) {
+                if (!DOM.studentDetails || !user) return;
+                
+                const detailsHtml = `
+                    <p><strong>Нэр:</strong> <span>${user.childName || 'Мэдээлэл оруулаагүй'}</span></p>
+                    <p><strong>Төрсөн огноо:</strong> <span>${user.birthDate ? Utils.formatDate(user.birthDate) : 'Мэдээлэл оруулаагүй'}</span></p>
+                    <p><strong>Эцэг/эхийн нэр:</strong> <span>${user.parentName || 'Мэдээлэл оруулаагүй'}</span></p>
+                    <p><strong>Утас:</strong> <span>${user.phone || 'Мэдээлэл оруулаагүй'}</span></p>
+                    <p><strong>Имэйл:</strong> <span>${user.email || 'Мэдээлэл оруулаагүй'}</span></p>
+                    <p><strong>Хөтөлбөр:</strong> <span>${user.program || 'Мэдээлэл оруулаагүй'}</span></p>
+                    <p><strong>Эхлэсэн огноо:</strong> <span>${user.startDate ? Utils.formatDate(user.startDate) : 'Мэдээлэл оруулаагүй'}</span></p>
+                    <p><strong>Дуусах огноо:</strong> <span>${user.endDate ? Utils.formatDate(user.endDate) : 'Мэдээлэл оруулаагүй'}</span></p>
+                    ${user.registrationId ? `<p><strong>Бүртгэлийн дугаар:</strong> <span>${user.registrationId}</span></p>` : ''}
+                `;
+                
+                DOM.studentDetails.innerHTML = detailsHtml;
+            }
+            
+            static updateProgressBars(progress) {
+                if (!progress) return;
+                
+                setTimeout(() => {
+                    const progressData = progress;
+                    
+                    // Update attention progress
+                    if (progressData.attention && DOM.attentionProgress) {
+                        const value = progressData.attention.current || 0;
+                        DOM.attentionProgress.style.width = `${value}%`;
+                        DOM.attentionProgress.setAttribute('aria-valuenow', value);
+                        DOM.attentionPercent.textContent = `${value}%`;
+                    }
+                    
+                    // Update memory progress
+                    if (progressData.memory && DOM.memoryProgress) {
+                        const value = progressData.memory.current || 0;
+                        DOM.memoryProgress.style.width = `${value}%`;
+                        DOM.memoryProgress.setAttribute('aria-valuenow', value);
+                        DOM.memoryPercent.textContent = `${value}%`;
+                    }
+                    
+                    // Update speed progress
+                    if (progressData.speed && DOM.speedProgress) {
+                        const value = progressData.speed.current || 0;
+                        DOM.speedProgress.style.width = `${value}%`;
+                        DOM.speedProgress.setAttribute('aria-valuenow', value);
+                        DOM.speedPercent.textContent = `${value}%`;
+                    }
+                    
+                    // Update social progress
+                    if (progressData.social && DOM.socialProgress) {
+                        const value = progressData.social.current || 0;
+                        DOM.socialProgress.style.width = `${value}%`;
+                        DOM.socialProgress.setAttribute('aria-valuenow', value);
+                        DOM.socialPercent.textContent = `${value}%`;
+                    }
+                }, 500);
+            }
+            
+            static updateUpcomingSessions(sessions) {
+                if (!DOM.upcomingSessions || !sessions) return;
+                
+                if (!sessions || sessions.length === 0) {
+                    DOM.upcomingSessions.innerHTML = '<p class="text-gray">Дараагийн сургалт төлөвлөгдөөгүй байна.</p>';
+                    return;
+                }
+                
+                let html = '';
+                sessions.forEach(session => {
+                    html += `
+                        <div class="session-item" style="padding: 0.75rem; border-bottom: 1px solid var(--gray-light);">
+                            <p style="font-weight: 600; margin-bottom: 0.25rem;">${session.topic}</p>
+                            <p style="color: var(--gray); font-size: 0.875rem;">
+                                <i class="far fa-calendar-alt"></i> ${Utils.formatDate(session.date)} 
+                                <i class="far fa-clock" style="margin-left: 1rem;"></i> ${session.time}
+                                ${session.instructor ? `<br><i class="fas fa-user" style="margin-right: 0.5rem;"></i> ${session.instructor}` : ''}
+                            </p>
+                        </div>
+                    `;
+                });
+                
+                DOM.upcomingSessions.innerHTML = html;
+            }
+            
+            static show() {
+                // Hide main sections
+                document.querySelectorAll('section:not(#dashboard), footer').forEach(el => {
+                    el.style.display = 'none';
+                });
+                
+                // Show dashboard
+                DOM.dashboard.style.display = 'block';
+                
+                // Update state
+                AppState.isLoggedIn = true;
+                
+                // Load and update data
+                this.loadDashboardData().then(data => {
+                    this.updateDashboardUI(data);
+                });
+                
+                // Analytics
+                if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                    console.log('Dashboard shown');
+                }
+            }
+            
+            static hide() {
+                // Show main sections
+                document.querySelectorAll('section, footer').forEach(el => {
+                    el.style.display = 'block';
+                });
+                
+                // Hide dashboard
+                DOM.dashboard.style.display = 'none';
+                
+                // Reset progress bars
+                [DOM.attentionProgress, DOM.memoryProgress, DOM.speedProgress, DOM.socialProgress].forEach(bar => {
+                    if (bar) bar.style.width = '0%';
+                });
+                
+                // Analytics
+                if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                    console.log('Dashboard hidden');
+                }
+            }
+        }
+        
+        // ============================================================================
+        // REGISTRATION SERVICE
+        // ============================================================================
+        
+        class RegistrationService {
+            static async submitRegistration(formData) {
+                try {
+                    // Add metadata
+                    const registrationData = {
+                        ...formData,
+                        registrationDate: new Date().toISOString(),
+                        source: 'website',
+                        environment: CONFIG.ENVIRONMENT,
+                        userAgent: navigator.userAgent,
+                        referrer: document.referrer || 'direct'
+                    };
+                    
+                    const response = await api.register(registrationData);
+                    
+                    if (response.success) {
+                        // Send confirmation email (simulated)
+                        await this.sendConfirmationEmail(formData.email, formData.childName);
+                        
+                        return {
+                            success: true,
+                            message: 'Бүртгэл амжилттай хийгдлээ! Баталгаажуулах имэйл илгээлээ.',
+                            registrationId: response.data.registrationId,
+                            data: response.data
+                        };
+                    } else {
+                        return {
+                            success: false,
+                            message: response.message || 'Бүртгэл хийхэд алдаа гарлаа'
+                        };
+                    }
+                } catch (error) {
+                    console.error('Registration failed:', error);
+                    return {
+                        success: false,
+                        message: 'Сервертэй холбогдоход алдаа гарлаа. Дараа дахин оролдоно уу.'
+                    };
+                }
+            }
+            
+            static async sendConfirmationEmail(email, childName) {
+                // In a real app, this would be handled by the backend
+                console.log(`Confirmation email sent to ${email} for child ${childName}`);
+                
+                // Simulate email sending
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        console.log(`Email sent successfully to ${email}`);
+                        resolve(true);
+                    }, 1000);
+                });
+            }
+            
+            static autoFillProgram(programType) {
+                if (!programType || !DOM.registrationForm) return;
+                
+                const programSelect = DOM.registrationForm.querySelector('#program');
+                if (programSelect) {
+                    programSelect.value = programType;
+                    
+                    // Scroll to registration
+                    setTimeout(() => {
+                        Utils.scrollToElement('registration');
+                    }, 300);
+                }
+            }
+        }
+        
+        // ============================================================================
+        // ANALYTICS SERVICE
+        // ============================================================================
+        
+        class AnalyticsService {
+            static trackEvent(eventName, eventData = {}) {
+                if (!CONFIG.FEATURES.ENABLE_ANALYTICS) return;
+                
+                const analyticsData = {
+                    event: eventName,
+                    timestamp: new Date().toISOString(),
+                    page: window.location.pathname,
+                    url: window.location.href,
+                    environment: CONFIG.ENVIRONMENT,
+                    userId: AppState.currentUser?.id,
+                    userEmail: AppState.currentUser?.email,
+                    ...eventData
+                };
+                
+                // Send to analytics endpoint
+                this.sendToAnalytics(analyticsData);
+                
+                // Log to console in debug mode
+                if (CONFIG.FEATURES.DEBUG_MODE) {
+                    console.log(`Analytics Event: ${eventName}`, analyticsData);
+                }
+            }
+            
+            static async sendToAnalytics(data) {
+                try {
+                    // In production, send to your analytics API
+                    if (CONFIG.ENVIRONMENT === 'production') {
+                        await fetch(`${CURRENT_API_CONFIG.BASE_URL}/api/v1/analytics/track`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        });
+                    }
+                } catch (error) {
+                    // Silently fail analytics
+                    console.warn('Analytics sending failed:', error);
+                }
+            }
+            
+            static trackPageView() {
+                this.trackEvent('page_view', {
+                    page_title: document.title,
+                    page_url: window.location.href
+                });
+            }
+            
+            static trackRegistrationStart() {
+                this.trackEvent('registration_started');
+            }
+            
+            static trackRegistrationComplete() {
+                this.trackEvent('registration_completed');
+            }
+            
+            static trackLogin() {
+                this.trackEvent('user_login');
+            }
+            
+            static trackLogout() {
+                this.trackEvent('user_logout');
+            }
+            
+            static trackProgramClick(programName) {
+                this.trackEvent('program_click', { program_name: programName });
+            }
+            
+            static trackButtonClick(buttonName) {
+                this.trackEvent('button_click', { button_name: buttonName });
+            }
+        }
+        
+        // ============================================================================
+        // EVENT HANDLERS
+        // ============================================================================
+        
+        async function handleLoginSubmit(e) {
+            e.preventDefault();
+            
+            if (!FormValidator.validateForm(DOM.loginForm)) return;
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Track login attempt
+            AnalyticsService.trackEvent('login_attempt', { email });
+            
+            // Show loading state
+            const submitBtn = DOM.loginForm.querySelector('button[type="submit"]');
+            Utils.setLoading(submitBtn, true);
+            
+            try {
+                const result = await AuthService.login(email, password);
+                
+                if (result.success) {
+                    ModalSystem.closeModal();
+                    
+                    // Load dashboard data
+                    const dashboardData = await DashboardService.loadDashboardData();
+                    
+                    // Show dashboard
+                    DashboardService.show();
+                    DashboardService.updateDashboardUI(dashboardData);
+                    
+                    AnalyticsService.trackLogin();
+                    Toast.success(`Тавтай морил, ${result.user.parentName}!`);
+                } else {
+                    Toast.error(result.message);
+                    AnalyticsService.trackEvent('login_failed', { email, reason: result.message });
+                }
+            } catch (error) {
+                Toast.error('Системийн алдаа гарлаа. Дараа дахин оролдоно уу.');
+            } finally {
+                // Reset button
+                Utils.setLoading(submitBtn, false);
+            }
+        }
+        
+        async function handleRegistrationSubmit(e) {
+            e.preventDefault();
+            
+            if (!FormValidator.validateForm(DOM.registrationForm)) return;
+            
+            if (AppState.isLoading) return;
+            
+            AnalyticsService.trackRegistrationStart();
+            
+            AppState.isLoading = true;
+            Utils.setLoading(DOM.submitBtn, true);
+            
+            try {
+                // Get form data
+                const formData = FormValidator.getFormData(DOM.registrationForm);
+                
+                // Submit to API
+                const result = await RegistrationService.submitRegistration(formData);
+                
+                if (result.success) {
+                    // Reset form
+                    DOM.registrationForm.reset();
+                    
+                    // Show success message
+                    Toast.success(result.message, 5000);
+                    
+                    AnalyticsService.trackRegistrationComplete();
+                    
+                    // Optionally redirect or show confirmation
+                    if (result.registrationId) {
+                        console.log('Registration ID:', result.registrationId);
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                } else {
+                    Toast.error(result.message);
+                }
+            } catch (error) {
+                Toast.error('Системийн алдаа гарлаа. Дараа дахин оролдоно уу.');
+            } finally {
+                // Reset button state
+                AppState.isLoading = false;
+                Utils.setLoading(DOM.submitBtn, false);
+            }
+        }
+        
+        function handleTestLogin(e) {
+            e.preventDefault();
+            
+            // Auto-fill test credentials
+            const testUser = CONFIG.TEST_USERS[0];
+            document.getElementById('loginEmail').value = testUser.email;
+            document.getElementById('loginPassword').value = testUser.password;
+            
+            // Show message about test mode
+            Toast.info('Тест хэрэглэгчийн мэдээлэл орууллаа. "Нэвтрэх" товчийг дарна уу.');
+        }
+        
+        async function handleLogout() {
+            if (confirm('Та системээс гарахдаа итгэлтэй байна уу?')) {
+                AuthService.logout();
+                DashboardService.hide();
+                AnalyticsService.trackLogout();
+                Toast.info('Амжилттай гарлаа');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        
+        function handlePrintReport() {
+            AnalyticsService.trackButtonClick('print_report');
+            window.print();
+        }
+        
+        async function handleRefreshDashboard() {
+            AnalyticsService.trackButtonClick('refresh_dashboard');
+            
+            if (DOM.refreshDashboardBtn) {
+                Utils.setLoading(DOM.refreshDashboardBtn, true);
+            }
+            
+            try {
+                const dashboardData = await DashboardService.loadDashboardData(true);
+                DashboardService.updateDashboardUI(dashboardData);
+                Toast.success('Өгөгдөл шинэчлэгдлээ');
+            } catch (error) {
+                Toast.error('Өгөгдөл шинэчлэхэд алдаа гарлаа');
+            } finally {
+                if (DOM.refreshDashboardBtn) {
+                    Utils.setLoading(DOM.refreshDashboardBtn, false);
+                }
+            }
+        }
+        
+        function handleMobileMenu() {
+            const isExpanded = DOM.mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            DOM.navLinks.classList.toggle('active');
+            DOM.mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            
+            // Update icon
+            const icon = DOM.mobileMenuBtn.querySelector('i');
+            if (icon) {
+                icon.className = isExpanded ? 'fas fa-bars' : 'fas fa-times';
+            }
+            
+            // Analytics
+            AnalyticsService.trackEvent('mobile_menu_toggle', { is_expanded: !isExpanded });
+        }
+        
+        function handleScroll() {
+            // Header scroll effect
+            if (window.scrollY > 100) {
+                DOM.header.classList.add('scrolled');
+            } else {
+                DOM.header.classList.remove('scrolled');
+            }
+            
+            // Update active nav link
+            updateActiveNavLink();
+        }
+        
+        function updateActiveNavLink() {
+            if (AppState.isLoggedIn) return; // Don't update when in dashboard
+            
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href === `#${current}` || (current === 'main-content' && href === '#')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        function handleSmoothScroll(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#' || targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
+                    
+                    // Close mobile menu if open
+                    if (DOM.navLinks.classList.contains('active')) {
+                        handleMobileMenu();
+                    }
+                    
+                    // Analytics
+                    AnalyticsService.trackEvent('nav_link_click', { target: targetId });
+                }
+            }
+        }
+        
+        function handleProgramButtonClick(e) {
+            const button = e.target.closest('[data-program]');
+            if (!button) return;
+            
+            const programType = button.getAttribute('data-program');
+            const action = button.getAttribute('data-action');
+            
+            AnalyticsService.trackProgramClick(programType);
+            
+            if (action === 'register') {
+                RegistrationService.autoFillProgram(programType);
+                Utils.scrollToElement('registration');
+            }
+        }
+        
+        function handleNetworkStatusChange() {
+            AppState.isOnline = navigator.onLine;
+            
+            if (AppState.isOnline) {
+                Toast.success('Интернэт холболт сэргэлээ', 2000);
+            } else {
+                Toast.warning('Интернэт холболт тасарлаа. Зарим үйлдэл хязгаарлагдах болно.', 3000);
+            }
+            
+            // Analytics
+            AnalyticsService.trackEvent('network_status_change', { is_online: AppState.isOnline });
+        }
+        
+        function handleBeforeUnload(e) {
+            // Save any unsaved data
+            if (AppState.isLoggedIn) {
+                localStorage.setItem('neurosun_last_session', new Date().toISOString());
+            }
+        }
+        
+        // ============================================================================
+        // INITIALIZATION
+        // ============================================================================
+        
+        async function init() {
+            console.log(`Initializing Neurosun Academy (${CONFIG.ENVIRONMENT})...`);
+            
+            // Update copyright year
+            Utils.updateCopyrightYear();
+            
+            // Initialize form validation
+            FormValidator.init(DOM.loginForm);
+            FormValidator.init(DOM.registrationForm);
+            
+            // Initialize modal system
+            ModalSystem.init();
+            
+            // Auto-login if token exists
+            const autoLoginSuccess = await AuthService.autoLogin();
+            if (autoLoginSuccess) {
+                const dashboardData = await DashboardService.loadDashboardData();
+                DashboardService.show();
+                DashboardService.updateDashboardUI(dashboardData);
+                console.log('Auto-login successful');
+            }
+            
+            // Set up program buttons
+            document.addEventListener('click', handleProgramButtonClick);
+            
+            // Set up event listeners
+            DOM.loginForm?.addEventListener('submit', handleLoginSubmit);
+            DOM.registrationForm?.addEventListener('submit', handleRegistrationSubmit);
+            DOM.logoutBtn?.addEventListener('click', handleLogout);
+            DOM.printReportBtn?.addEventListener('click', handlePrintReport);
+            DOM.refreshDashboardBtn?.addEventListener('click', handleRefreshDashboard);
+            DOM.mobileMenuBtn?.addEventListener('click', handleMobileMenu);
+            
+            // Test login button
+            document.querySelectorAll('.btn-outline[href="#loginModal"]').forEach(btn => {
+                btn.addEventListener('click', handleTestLogin);
+            });
+            
+            // Smooth scroll for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', handleSmoothScroll);
+            });
+            
+            // Network status monitoring
+            window.addEventListener('online', handleNetworkStatusChange);
+            window.addEventListener('offline', handleNetworkStatusChange);
+            
+            // Scroll event with throttling
+            window.addEventListener('scroll', Utils.throttle(handleScroll, 100));
+            
+            // Before unload event
+            window.addEventListener('beforeunload', handleBeforeUnload);
+            
+            // Initialize scroll handler
+            handleScroll();
+            
+            // Set initial progress bar widths to 0
+            document.querySelectorAll('.progress-fill').forEach(bar => {
+                bar.style.width = '0%';
+            });
+            
+            // Track page view
+            AnalyticsService.trackPageView();
+            
+            // Log initialization
+            console.log('Initialization complete!');
+            console.log('Environment:', CONFIG.ENVIRONMENT);
+            console.log('API Base URL:', CURRENT_API_CONFIG.BASE_URL);
+            console.log('Mock API Enabled:', CURRENT_API_CONFIG.MOCK_ENABLED);
+            console.log('Test Users:', CONFIG.TEST_USERS.length);
+            
+            // Show welcome message in development
+            if (CONFIG.ENVIRONMENT === 'development') {
+                setTimeout(() => {
+                    Toast.info(`Neurosun Academy (${CONFIG.ENVIRONMENT}) амжилттай ачаалагдлаа`, 3000);
+                }, 1000);
+            }
+        }
+        
+        // ============================================================================
+        // APPLICATION START
+        // ============================================================================
+        
+        // Start the application when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+        
+        // Global error handler
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+            
+            // Don't show error toast for development
+            if (CONFIG.ENVIRONMENT !== 'development') {
+                Toast.error('Системийн алдаа гарлаа. Дахин оролдоно уу.');
+            }
+            
+            // Send to analytics
+            if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                AnalyticsService.trackEvent('javascript_error', {
+                    message: e.error?.message,
+                    filename: e.filename,
+                    lineno: e.lineno,
+                    colno: e.colno
+                });
+            }
+        });
+        
+        // Unhandled promise rejection handler
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Unhandled promise rejection:', e.reason);
+            
+            // Send to analytics
+            if (CONFIG.FEATURES.ENABLE_ANALYTICS) {
+                AnalyticsService.trackEvent('unhandled_promise_rejection', {
+                    reason: e.reason?.toString()
+                });
+            }
+        });
+        
+    </script>
+</body>
+</html>
